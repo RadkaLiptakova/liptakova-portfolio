@@ -1,0 +1,1 @@
+# Projekt-poistenie-Liptakova
