@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<!-- Header section: Includes navigation, logo, or any top-level content -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <!-- Main content of the About Us page -->
+        <div class="text-center">
+            <h1>About Eshop</h1>
+        </div>
+        <div class="text-center">
+            <!-- Eshop logo image -->
+            <img th:src="@{/images/eshop_logo.svg}" alt="logo" width="400" height="200"/>
+            <div>
+                <h2>About Eshop</h2>
+                <!-- Description of the Eshop features -->
+                <p>Our e-shop is created for the possibility of selling the product.<br/>
+                    Thanks to the use of JPA, we can add products directly from the web.<br/>
+                    We can also edit or delete products directly from the website. You can also view the details of the
+                    given product
+                </p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Footer section: Includes footer content like copyright information -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

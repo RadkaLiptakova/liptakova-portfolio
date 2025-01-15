@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+<body>
+<!-- Header section: Includes navigation and site-wide elements -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <!-- Page title for adding a new product -->
+        <h1>New product:</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Form for creating a new product -->
+                <form method="post" th:action="@{/products/create}" th:object="${productDTO}">
+
+                    <!-- Product name input field -->
+                    <div class="form-group">
+                        <label for="name" class="control-label">Product name</label>
+                        <input id="name" class="form-control" th:field="*{name}"/>
+                    </div>
+
+                    <!-- Product description input field -->
+                    <div class="form-group">
+                        <label for="description" class="control-label">Product description</label>
+                        <input id="description" class="form-control" th:field="*{description}"/>
+                    </div>
+
+                    <!-- Product price input field -->
+                    <div class="form-group">
+                        <label for="price" class="control-label">Product price</label>
+                        <input id="price" class="form-control" th:field="*{price}"/>
+                    </div>
+
+                    <!-- Submit button to create the product -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Link to go back to the products list -->
+        <div>
+            <a th:href="@{/products}">Back</a>
+        </div>
+    </main>
+</div>
+
+<!-- Footer section: Includes footer content like copyright and site links -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

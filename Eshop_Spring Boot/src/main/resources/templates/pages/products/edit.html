@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+<body>
+<!-- Header section: Reusable fragment for site-wide header and navigation -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <!-- Page title for editing a product -->
+        <h1>Edit</h1>
+        <hr/>
+
+        <!-- Form to edit product details -->
+        <div class="row">
+            <div class="col-md-4">
+                <form class="form-group"
+                      method="post"
+                      th:action="@{'/products/edit/' + ${id}}"
+                      th:object="${productDTO}">
+
+                    <!-- Product name field -->
+                    <div class="form-group">
+                        <label for="name" class="control-label">Product name</label>
+                        <input id="name" class="form-control" th:field="*{name}"/>
+                    </div>
+
+                    <!-- Product description field -->
+                    <div class="form-group">
+                        <label for="description" class="control-label">Product description</label>
+                        <input id="description" class="form-control" th:field="*{description}"/>
+                    </div>
+
+                    <!-- Product price field -->
+                    <div class="form-group">
+                        <label for="price" class="control-label">Product price</label>
+                        <input id="price" class="form-control" th:field="*{price}"/>
+                    </div>
+
+                    <!-- Submit button to save the edited product -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Back link to return to the products list -->
+        <div>
+            <a th:href="@{/products}">Back</a>
+        </div>
+    </main>
+</div>
+
+<!-- Footer section: Reusable fragment for site-wide footer content -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

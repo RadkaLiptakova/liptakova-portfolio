@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<!-- Header section: Includes navigation and site-wide elements -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+<main role="main" class="pb-3">
+  <!-- Main content of the homepage -->
+  <div class="text-center">
+    <!-- Page heading -->
+    <h1>Main page</h1>
+    <!-- Subtitle or welcome message for visitors -->
+    <h2>Welcome to our E-Shop</h2>
+    <!-- Short description -->
+    <p>Continue to the page about our e-shop or go to the offered products.</p>
+  </div>
+</main>
+</div>
+
+<!-- Footer section: Includes footer content like copyright and site links -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

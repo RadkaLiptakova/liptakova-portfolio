@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<!-- Header section: Includes the navigation and header for the page -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <!-- Display success message -->
+    <div class="alert alert-success" th:text="${success}" th:if="${success}"></div>
+    <!-- Display error message -->
+    <div class="alert alert-danger" th:text="${error}" th:if="${error}"></div>
+
+    <main role="main" class="pb-3">
+        <!-- Page title -->
+        <h1>Products</h1>
+
+        <!-- Link to create a new product (visible only for users with the 'ADMIN' role) -->
+        <a sec:authorize="hasRole('ADMIN')" class="create-new" th:href="@{/products/create}">Create new</a>
+
+        <!-- Table displaying a list of products -->
+        <table>
+            <thead>
+            <tr>
+                <th>Product name</th>
+                <th>Product description</th>
+                <th>Product price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate through the 'products' list and display each product -->
+            <tr th:each="product: ${products}">
+                <!-- Display product name -->
+                <td><b th:text="${product.name}"></b></td>
+                <!-- Display product description -->
+                <td><i th:text="${product.description}"></i></td>
+                <!-- Display product price -->
+                <td><span th:text="${product.price}"></span> $</td>
+                <td>
+                    <!-- Links for editing, viewing details, or deleting a product (only visible for users with 'ADMIN' role) -->
+                    <a sec:authorize="hasRole('ADMIN')" th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
+                    <span sec:authorize="hasRole('ADMIN')">|</span>
+                    <a th:href="@{'/products/' + ${product.id}}">Detail</a>
+                    <span sec:authorize="hasRole('ADMIN')">|</span>
+                    <a sec:authorize="hasRole('ADMIN')" th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+
+<!-- Footer section: Includes the footer for the page -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

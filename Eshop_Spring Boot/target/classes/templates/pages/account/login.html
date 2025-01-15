@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<!-- Header section: Includes navigation, logo, or any top-level content -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <!-- Display success message -->
+<div class="py-2 alert alert-success" th:text="${success}" th:if="${success}"></div>
+    <!-- Display error message if login fails (invalid email or password) -->
+<div class="py-2 alert alert-danger" th:if="${param.error}">Invalid email or password</div>
+
+<main role="main" class="pb-3">
+        <section>
+            <!-- Login form section -->
+            <div class="col-md-4 col-md-offset-4">
+                <form th:action="@{/account/login}" method="post" class="d-flex flex-column gap-2">
+                    <!-- Email input field -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="text" class="form-control"/>
+                    </div>
+
+                    <!-- Password input field -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" class="form-control"/>
+                    </div>
+
+                    <!-- Submit button for the form -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary align-self-start">Log in</button>
+                    </div>
+
+                    <!-- Link to the registration page -->
+                    <div class="form-group">
+                        <p>
+                            <a th:href="@{/account/register}">Registration</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+</main>
+</div>
+
+<!-- Footer section: Includes footer content like copyright information -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

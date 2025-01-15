@@ -1,0 +1,6 @@
+main {
+    min-height: calc(100vh - 130px); /* Adjusts height to ensure content area remains fully visible */
+}
+.nav-link:hover{
+text-decoration: underline; /* Adds an underline effect on hover */
+}

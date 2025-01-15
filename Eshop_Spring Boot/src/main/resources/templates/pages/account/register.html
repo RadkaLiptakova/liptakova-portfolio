@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<!-- Header section: Includes navigation, logo, or any top-level content -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="container">
+    <!-- Display success message -->
+    <div class="py-2 py-2 alert alert-success" th:text="${success}" th:if="${success}"></div>
+    <!-- Display error message -->
+    <div class="py-2 alert alert-danger" th:text="${error}" th:if="${error}"></div>
+
+    <main role="main" class="pb-3">
+        <section>
+            <!-- Registration form -->
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <!-- Form for creating a new user -->
+                    <form th:action="@{/account/register}" th:object="${userDTO}" method="post"
+                          class="d-flex flex-column gap-2">
+
+                        <!-- Email input field -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" name="email"  type="text" th:field="*{email}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{email}"></small>
+                        </div>
+
+                        <!-- Password input field -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" th:field="*{password}"
+                                   class="form-control"/>
+                            <small class="text-danger" th:errors="*{password}"></small>
+                        </div>
+
+                        <!-- Confirm password input field -->
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm password</label>
+                            <input id="confirm-password" name="confirmPassword" type="password"
+                                   th:field="*{confirmPassword}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{confirmPassword}"></small>
+                        </div>
+
+                        <!-- Submit button to register -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary align-self-start">Register</button>
+                        </div>
+
+                        <!-- Link to the login page if the user already has an account -->
+                        <div class="form-group">
+                            <p>
+                                <a th:href="@{/account/login}">Log in</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Footer section: Includes footer content like copyright information -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+</html>

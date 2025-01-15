@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <!-- Meta charset declaration for proper character encoding -->
+    <meta charset="UTF-8">
+    <!-- Title of the page displayed in the browser tab -->
+    <title>Eshop</title>
+
+    <!-- External CSS files: Bootstrap for styling and custom style.css -->
+    <link rel="stylesheet" th:href="@{/style/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/style/style.css}" type="text/css"/>
+</head>
+<body>
+<!-- Header section containing the navigation bar -->
+<header th:fragment="header">
+    <!-- Navbar container with responsive design -->
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <!-- Navbar toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links, collapsible in small screen sizes -->
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <!-- Navbar items (Main page, About Eshop, Products, etc.) -->
+        <ul class="navbar-nav flex-grow-1">
+            <!-- Main page link -->
+            <li class="nav-item">
+                <a class="nav-link text-dark" th:href="@{/}">Main page</a></li>
+            <!-- About Us link -->
+            <li class="nav-item">
+                <a class="nav-link text-dark" th:href="@{/about-us}">About Eshop</a></li>
+            <!-- Products page link -->
+            <li class="nav-item">
+                <a class="nav-link text-dark" th:href="@{/products}">Products</a></li>
+            <!-- Login link, only visible to anonymous users (not logged in) -->
+            <li class="nav-item" sec:authorize="isAnonymous()">
+                <a class="nav-link text-dark" th:href="@{/account/login}">Login</a></li>
+            <!-- Log out link, only visible to authenticated users (logged in) -->
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-dark" th:href="@{/account/login}">Log out</a></li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Footer section with copyright information -->
+<footer class="border-top py-3 text-muted" th:fragment="footer">
+    <div class="container">
+        &copy; 2024 - Eshop
+    </div>
+    </footer>
+</body>
+</html>
