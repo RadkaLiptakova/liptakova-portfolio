@@ -1,0 +1,7 @@
+/* 
+ * Styling for images inside a card component.
+ */
+.card img {
+    width: 150px;
+    height: auto;
+}
